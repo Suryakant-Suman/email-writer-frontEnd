@@ -11,12 +11,14 @@ function App() {
   const [generatedReply, setgeneratedreply] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const URL=import.meta.env.VITE_BASE_URL;
 
   const handleSubmit = async () => {
+    
     setLoading(true);
     setError('');
     try{
-      const response = await axios.post("http://localhost:8080/api/email/generate",{
+      const response = await axios.post(`${URL}/api/email/generate`,{
         emailContent,
         tone
       });
